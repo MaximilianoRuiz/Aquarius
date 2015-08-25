@@ -7,4 +7,5 @@
     <string name="title_activity_home">Aquarius / SAC-D</string>
     <string name="home_screen_text">Aquarius data have revealed interesting features in the global ocean, including a salty patch of water in the North Atlantic
 Ocean. Evaporation of water from this area leaves behind large amounts of salt, contributing to a high-salinity region.</string>
+    <string name="title_activity_sacsection">SAC-D</string>
 </resources>

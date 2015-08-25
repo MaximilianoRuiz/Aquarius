@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:text="New Button"
             android:layout_weight="1"
+            android:onClick="openSacSection"
             android:drawableRight="@drawable/icondisclosure"
             android:id="@+id/button2" />
     </LinearLayout>

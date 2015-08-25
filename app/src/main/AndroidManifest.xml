@@ -20,6 +20,14 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".SACSectionActivity"
+            android:label="@string/title_activity_sacsection"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.maximiliano.aquarius.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
