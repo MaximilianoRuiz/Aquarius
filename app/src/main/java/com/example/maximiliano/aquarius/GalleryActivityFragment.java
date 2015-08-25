@@ -1,10 +1,14 @@
 package com.example.maximiliano.aquarius;
 
-import android.support.v4.app.Fragment;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 /**
@@ -12,6 +16,7 @@ import android.widget.ListView;
  */
 public class GalleryActivityFragment extends Fragment {
 
+    public static final String ITEM_POSITION = "ITEM_POSITION";
     ListView listView;
     String[] list;
 
@@ -27,6 +32,22 @@ public class GalleryActivityFragment extends Fragment {
 
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(new GalleryAdapter(getActivity(), list));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putInt(ITEM_POSITION, position);
+
+                Fragment fragment = new DetailFragment();
+                fragment.setArguments(bundle);
+
+
+                FragmentTransaction trans = getFragmentManager().beginTransaction();
+                trans.replace(R.id.main, fragment);
+                trans.commit();
+            }
+        });
 
         return rootView;
     }

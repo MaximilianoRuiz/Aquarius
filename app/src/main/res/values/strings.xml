@@ -10,6 +10,9 @@
     <string name="gallly_top_body_title">Select an Item:</string>
     <string name="title_activity_sacsection">SAC-D</string>
     <string name="title_activity_gallery">Gallery</string>
+    <string name="image">Image</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 
     <string-array name="titles">
         <item>Schematic Diagram of Aquarius in Deploy-ready Mode</item>
