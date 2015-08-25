@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.maximiliano.aquarius" >
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,6 +25,14 @@
         <activity
             android:name=".SACSectionActivity"
             android:label="@string/title_activity_sacsection"
+            android:parentActivityName=".HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.maximiliano.aquarius.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".GalleryActivity"
+            android:label="@string/title_activity_gallery"
             android:parentActivityName=".HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

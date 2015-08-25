@@ -5,7 +5,28 @@
     <string name="action_settings">Settings</string>
     <string name="splash_text">Aquarius / SAC-D</string>
     <string name="title_activity_home">Aquarius / SAC-D</string>
+    <string name="sac_action_button">SAC-D</string>
+    <string name="galllry_action_button">Gallery</string>
+    <string name="gallly_top_body_title">Select an Item:</string>
+    <string name="title_activity_sacsection">SAC-D</string>
+    <string name="title_activity_gallery">Gallery</string>
+
+    <string-array name="titles">
+        <item>Schematic Diagram of Aquarius in Deploy-ready Mode</item>
+        <item>Aquarius/SAC-D Observatory Diagram</item>
+        <item>CONAE and NASA Components of the Aquarius/SAC-D Observatory</item>
+        <item>Aquarius Instrument Diagram</item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item>Schematic diagram shows the Aquarius/SAC-D observatory stowed in the launch vehicle fairing just prior to its June 2011 launch. Credit: NASA Aquarius.</item>
+        <item>ASimplified model of the Aquarius/SAC-D observatory. Credit: NASA Aquarius.</item>
+        <item>Image delineates the SAC-D service platform built by the Space Agency of Argentina, CONAE and the NASA-contributed Aquarius instrument. Credit: NASA Aquarius.</item>
+        <item>Simplified model of the NASA Aquarius instrument. Credit: NASA Aquarius.</item>
+    </string-array>
+
     <string name="home_screen_text">Aquarius data have revealed interesting features in the global ocean, including a salty patch of water in the North Atlantic
 Ocean. Evaporation of water from this area leaves behind large amounts of salt, contributing to a high-salinity region.</string>
-    <string name="title_activity_sacsection">SAC-D</string>
+
+
 </resources>
