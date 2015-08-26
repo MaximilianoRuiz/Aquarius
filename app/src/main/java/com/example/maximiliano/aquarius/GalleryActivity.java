@@ -30,4 +30,8 @@ public class GalleryActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
+
+    public void changeActivityTitle(String title){
+        actionBar.setTitle(title);
+    }
 }

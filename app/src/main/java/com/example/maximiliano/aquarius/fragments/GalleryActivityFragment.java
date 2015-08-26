@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.maximiliano.aquarius.GalleryActivity;
 import com.example.maximiliano.aquarius.adapters.GalleryAdapter;
 import com.example.maximiliano.aquarius.R;
 import com.example.maximiliano.aquarius.data.DetailVO;
@@ -36,6 +37,8 @@ public class GalleryActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
+
+        ((GalleryActivity)getActivity()).changeActivityTitle(getResources().getString(R.string.title_activity_gallery));
 
         detailVOs = Utility.obteinDetailVOList(getContext());
 

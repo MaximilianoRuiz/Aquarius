@@ -16,6 +16,7 @@
     <string name="order_pref_title">Order for</string>
     <string name="order_pref_key">Order Key</string>
     <string name="priority">Priority</string>
+    <string name="detail">Detail</string>
 
     <integer-array name="priorities">
         <item>1</item>

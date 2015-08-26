@@ -15,6 +15,7 @@
     <string name="description">Descripcion</string>
     <string name="order_pref_title">Ordenar por</string>
     <string name="priority">Prioridad</string>
+    <string name="detail">Detalle</string>
 
     <string-array name="titles">
         <item>Diagrama del Aquarius listo para deployar</item>
