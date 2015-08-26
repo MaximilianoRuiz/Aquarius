@@ -1,8 +1,7 @@
-package com.example.maximiliano.aquarius;
+package com.example.maximiliano.aquarius.fragments;
 
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.maximiliano.aquarius.adapters.GalleryAdapter;
+import com.example.maximiliano.aquarius.R;
+import com.example.maximiliano.aquarius.data.Utility;
 
 import java.util.ArrayList;
 import java.util.Arrays;

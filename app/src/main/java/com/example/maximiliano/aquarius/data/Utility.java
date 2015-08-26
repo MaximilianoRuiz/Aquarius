@@ -1,20 +1,27 @@
-package com.example.maximiliano.aquarius;
+package com.example.maximiliano.aquarius.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.example.maximiliano.aquarius.R;
+
 public class Utility {
 
-    private static final String IS_SPLAS = "is_splash";
+    public static final String IS_SPLAS = "is_splash";
+    public static final String JPG = ".jpg";
+    public static final String GIF = ".gif";
+    public static final String ACTIONBAR_BACKGROUND = "#FFE8E8E8";
+    public static final String EMPTY_STRING = "";
 
     public static String getURLFileName(String url){
-        int last = url.lastIndexOf("/");
-        int fin = url.lastIndexOf(".jpg");
-        if (fin < last)
-            fin = url.lastIndexOf(".gif");
+        int lastOcurrencePosition = url.lastIndexOf("/");
+        int extentionFilePosition = url.lastIndexOf(JPG);
 
-        return url.substring(last + 1, fin);
+        if (extentionFilePosition < lastOcurrencePosition)
+            extentionFilePosition = url.lastIndexOf(GIF);
+
+        return url.substring(lastOcurrencePosition + 1, extentionFilePosition);
     }
 
     public static boolean isSplashShow(Context context){

@@ -6,6 +6,8 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
+import com.example.maximiliano.aquarius.data.Utility;
+
 import java.util.prefs.PreferenceChangeEvent;
 import java.util.prefs.PreferenceChangeListener;
 
@@ -25,7 +27,7 @@ public class SetingsActivity extends PreferenceActivity implements Preference.On
 
         onPreferenceChange(preference,
                 PreferenceManager.getDefaultSharedPreferences(preference.getContext())
-                                 .getString(preference.getKey(), ""));
+                                 .getString(preference.getKey(), Utility.EMPTY_STRING));
     }
 
     @Override
