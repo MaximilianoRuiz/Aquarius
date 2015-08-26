@@ -69,6 +69,8 @@ public class DetailFragment extends Fragment {
 
         public static final String IMAGES = "images";
         public static final String JPG = ".jpg";
+        public static final String EMPTY_PATH = "";
+        private Bitmap bitmap = null;
 
         @Override
         protected String doInBackground(String... params) {
@@ -88,20 +90,25 @@ public class DetailFragment extends Fragment {
 
             progressBar.setVisibility(View.GONE);
             imageView.setVisibility(View.VISIBLE);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(pathImage));
+            Bitmap finalBitmap = EMPTY_PATH.equals(pathImage) ?
+                    bitmap : BitmapFactory.decodeFile(pathImage);
+            imageView.setImageBitmap(finalBitmap);
 
         }
 
         private String downloadImage(String imageHttpAddress, String name) {
             java.net.URL imageUrl = null;
             Bitmap image = null;
-            String path = "";
+            String path = EMPTY_PATH;
             try {
                 imageUrl = new URL(imageHttpAddress);
                 HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
                 conn.connect();
                 image = BitmapFactory.decodeStream(conn.getInputStream());
                 path = saveImage(getActivity(), name, image);
+                if (EMPTY_PATH.equals(path))
+                    bitmap = image;
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -124,6 +131,9 @@ public class DetailFragment extends Fragment {
                 ex.printStackTrace();
             }catch (IOException ex){
                 ex.printStackTrace();
+            }
+            catch (Exception e) {
+                return EMPTY_PATH;
             }
             return myPath.getAbsolutePath();
         }

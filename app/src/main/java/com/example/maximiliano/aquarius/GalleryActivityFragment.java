@@ -36,6 +36,8 @@ public class GalleryActivityFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int container;
+
                 Bundle bundle = new Bundle();
                 bundle.putInt(ITEM_POSITION, position);
 
@@ -44,7 +46,14 @@ public class GalleryActivityFragment extends Fragment {
 
 
                 FragmentTransaction trans = getFragmentManager().beginTransaction();
-                trans.replace(R.id.main, fragment);
+
+                if(getActivity().findViewById(R.id.main_detail) != null){
+                    container = R.id.main_detail;
+                } else {
+                    container = R.id.main;
+                }
+
+                trans.replace(container, fragment);
                 trans.commit();
             }
         });
