@@ -28,6 +28,13 @@
         <item>Simplified model of the NASA Aquarius instrument. Credit: NASA Aquarius.</item>
     </string-array>
 
+    <string-array name="urls">
+        <item>http://aquarius.umaine.edu/images/folded_inst.jpg</item>
+        <item>http://aquarius.umaine.edu/images/aq_sacd_model.jpg</item>
+        <item>http://aquarius.umaine.edu/images/aquarius_sacd.jpg</item>
+        <item>http://aquarius.umaine.edu/images/aq_drawing.gif</item>
+    </string-array>
+
     <string name="home_screen_text">Aquarius data have revealed interesting features in the global ocean, including a salty patch of water in the North Atlantic
 Ocean. Evaporation of water from this area leaves behind large amounts of salt, contributing to a high-salinity region.</string>
 
