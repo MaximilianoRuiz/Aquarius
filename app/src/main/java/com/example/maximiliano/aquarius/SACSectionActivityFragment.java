@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ import java.net.URL;
 public class SACSectionActivityFragment extends Fragment {
 
     public static final String URL = "http://aquarius.umaine.edu/images/bht.jpg";
+    private static final String IMAGE_PATH = "/data/data/com.example.maximiliano.aquarius/app_images/";
 
     private ProgressBar progressBar;
     private ImageView imageView;
@@ -44,7 +44,12 @@ public class SACSectionActivityFragment extends Fragment {
         imageView = (ImageView) rootView.findViewById(R.id.imageView);
 
         ImageWorker imageWorker = new ImageWorker();
-        imageWorker.execute(URL);
+
+        int last = URL.lastIndexOf("/");
+        int fin = URL.lastIndexOf(".jpg");
+        String s = URL.substring(last + 1, fin);
+
+        imageWorker.execute(URL, s);
 
         return rootView;
     }
@@ -54,8 +59,13 @@ public class SACSectionActivityFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
-            String image = downloadImage(url);
-            return image;
+            String name = params[1];
+            File f = new File(IMAGE_PATH + name + ".jpg");
+            if(f.exists() && !f.isDirectory()) {
+                return f.getAbsolutePath();
+            } else {
+                return downloadImage(url, name);
+            }
         }
 
         @Override
@@ -68,7 +78,7 @@ public class SACSectionActivityFragment extends Fragment {
 
         }
 
-        private String downloadImage(String imageHttpAddress) {
+        private String downloadImage(String imageHttpAddress, String name) {
             java.net.URL imageUrl = null;
             Bitmap image = null;
             String path = "";
@@ -77,7 +87,7 @@ public class SACSectionActivityFragment extends Fragment {
                 HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
                 conn.connect();
                 image = BitmapFactory.decodeStream(conn.getInputStream());
-                path = saveImage(getActivity(), "satelite", image);
+                path = saveImage(getActivity(), name, image);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
