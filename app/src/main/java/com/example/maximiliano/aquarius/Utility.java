@@ -29,8 +29,9 @@ public class Utility {
         editor.commit();
     }
 
-    public static String getOrderPreference(Context context){
+    public static boolean isASCOrderPreferenceSelected(Context context){
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        return pref.getString(context.getString(R.string.order_pref_key), context.getString(R.string.asc));
+        String orderAsc = context.getString(R.string.asc);
+        return orderAsc.equals(pref.getString(context.getString(R.string.order_pref_key), orderAsc));
     }
 }

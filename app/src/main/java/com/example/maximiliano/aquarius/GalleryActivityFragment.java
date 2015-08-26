@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -18,7 +23,7 @@ public class GalleryActivityFragment extends Fragment {
 
     public static final String ITEM_POSITION = "ITEM_POSITION";
     ListView listView;
-    String[] list;
+    List<String> list;
 
     public GalleryActivityFragment() {
     }
@@ -28,7 +33,13 @@ public class GalleryActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
 
-        list = getResources().getStringArray(R.array.titles);
+        list = new ArrayList(Arrays.asList(getResources().getStringArray(R.array.titles)));
+
+        if (Utility.isASCOrderPreferenceSelected(getActivity())) {
+            Collections.sort(list);
+        } else {
+            Collections.sort(list, Collections.reverseOrder());
+        }
 
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(new GalleryAdapter(getActivity(), list));

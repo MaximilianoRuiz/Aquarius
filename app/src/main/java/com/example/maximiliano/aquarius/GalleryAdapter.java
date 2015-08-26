@@ -7,13 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class GalleryAdapter extends ArrayAdapter{
 
     Context context;
-    String[] list;
+    List<String> list;
 
 
-    public GalleryAdapter(Context context, String[] list) {
+    public GalleryAdapter(Context context, List<String> list) {
         super(context, R.layout.gallery_list_adapter, list);
         this.context = context;
         this.list = list;
@@ -34,7 +36,7 @@ public class GalleryAdapter extends ArrayAdapter{
 
         GalleryViewHolder holder = new GalleryViewHolder(row);
 
-        holder.textView.setText(list[position]);
+        holder.textView.setText(list.get(position));
 
         return row;
     }
