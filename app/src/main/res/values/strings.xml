@@ -13,6 +13,7 @@
     <string name="image">Image</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="detail">Detail</string>
 
     <string-array name="titles">
         <item>Schematic Diagram of Aquarius in Deploy-ready Mode</item>

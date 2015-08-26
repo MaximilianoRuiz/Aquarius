@@ -59,14 +59,7 @@ public class DetailFragment extends Fragment {
 
         ImageWorker imageWorker = new ImageWorker();
 
-        int last = url.lastIndexOf("/");
-        int fin = url.lastIndexOf(".jpg");
-        if (fin < last)
-            fin = url.lastIndexOf(".gif");
-
-        String name = url.substring(last + 1, fin);
-
-        imageWorker.execute(url, name);
+        imageWorker.execute(url, Utility.getURLFileName(url));
 
         return rootView;
     }
@@ -74,11 +67,14 @@ public class DetailFragment extends Fragment {
 
     public class ImageWorker extends AsyncTask<String, Void, String> {
 
+        public static final String IMAGES = "images";
+        public static final String JPG = ".jpg";
+
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
             String name = params[1];
-            File f = new File(IMAGE_PATH + name + ".jpg");
+            File f = new File(IMAGE_PATH + name + JPG);
             if(f.exists() && !f.isDirectory()) {
                 return f.getAbsolutePath();
             } else {
@@ -116,8 +112,8 @@ public class DetailFragment extends Fragment {
 
         private String saveImage (Context context, String nombre, Bitmap image){
             ContextWrapper cw = new ContextWrapper(context);
-            File dirImages = cw.getDir("images", Context.MODE_PRIVATE);
-            File myPath = new File(dirImages, nombre + ".jpg");
+            File dirImages = cw.getDir(IMAGES, Context.MODE_PRIVATE);
+            File myPath = new File(dirImages, nombre + JPG);
 
             FileOutputStream fos = null;
             try{
