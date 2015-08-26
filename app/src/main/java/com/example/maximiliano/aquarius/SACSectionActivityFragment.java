@@ -45,22 +45,21 @@ public class SACSectionActivityFragment extends Fragment {
 
         ImageWorker imageWorker = new ImageWorker();
 
-        int last = URL.lastIndexOf("/");
-        int fin = URL.lastIndexOf(".jpg");
-        String s = URL.substring(last + 1, fin);
-
-        imageWorker.execute(URL, s);
+        imageWorker.execute(URL, Utility.getURLFileName(URL));
 
         return rootView;
     }
 
     public class ImageWorker extends AsyncTask<String, Void, String> {
 
+        public static final String JPG = ".jpg";
+        public static final String IMAGES = "images";
+
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
             String name = params[1];
-            File f = new File(IMAGE_PATH + name + ".jpg");
+            File f = new File(IMAGE_PATH + name + JPG);
             if(f.exists() && !f.isDirectory()) {
                 return f.getAbsolutePath();
             } else {
@@ -98,8 +97,8 @@ public class SACSectionActivityFragment extends Fragment {
 
         private String saveImage (Context context, String nombre, Bitmap image){
             ContextWrapper cw = new ContextWrapper(context);
-            File dirImages = cw.getDir("images", Context.MODE_PRIVATE);
-            File myPath = new File(dirImages, nombre + ".jpg");
+            File dirImages = cw.getDir(IMAGES, Context.MODE_PRIVATE);
+            File myPath = new File(dirImages, nombre + JPG);
 
             FileOutputStream fos = null;
             try{

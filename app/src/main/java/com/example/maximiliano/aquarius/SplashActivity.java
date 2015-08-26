@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 public class SplashActivity extends AppCompatActivity {
 
     ActionBar actionBar;
+    int seconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,15 @@ public class SplashActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFE8E8E8")));
 
+        seconds = Utility.isSplashShow(this) ? 3 : 0;
+
         Thread splash = new Thread() {
             public void run() {
                 try {
-                    sleep(3*1000);
+                    sleep(seconds*1000);
                     Intent intent = new Intent(getBaseContext(),HomeActivity.class);
                     startActivity(intent);
+                    Utility.stopSplashShow(getBaseContext());
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

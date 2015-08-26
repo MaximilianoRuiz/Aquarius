@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Aquarius</string>
+
+    <string name="hello_world">Hola Mundo</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="splash_text">Aquarius / SAC-D</string>
+    <string name="title_activity_home">Aquarius / SAC-D</string>
+    <string name="sac_action_button">SAC-D</string>
+    <string name="galllry_action_button">Galeria</string>
+    <string name="gallly_top_body_title">Selecciona un Item:</string>
+    <string name="title_activity_sacsection">SAC-D</string>
+    <string name="title_activity_gallery">Galeria</string>
+    <string name="image">Imagen</string>
+    <string name="title">Titulo</string>
+    <string name="description">Descripcion</string>
+
+    <string-array name="titles">
+        <item>Diagrama del Aquarius listo para deployar</item>
+        <item>Diagrama del Aquarius/SAC-D</item>
+        <item>Componenetes de la CONAE y la NASA</item>
+        <item>Diagrama de isntumentos del Aquarius</item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item>Este diagrama muestra al Aquarius/SAC-D en el vehiculo de transporte antes se su lanzamiento en Junio 2011. Credito: NASA Aquarius.</item>
+        <item>Modelo simplificado del Aquarius/SAC-D observatory. Credito: NASA Aquarius.</item>
+        <item>La imagen muestra los componenetes construidos por la agencia espacial Argentina, CONAE y la NASA. Credito: NASA Aquarius.</item>
+        <item>Modelo simplificado del los instrumentos del Aquarius. Credito: NASA Aquarius.</item>
+    </string-array>
+
+    <string-array name="urls">
+        <item>http://aquarius.umaine.edu/images/folded_inst.jpg</item>
+        <item>http://aquarius.umaine.edu/images/aq_sacd_model.jpg</item>
+        <item>http://aquarius.umaine.edu/images/aquarius_sacd.jpg</item>
+        <item>http://aquarius.umaine.edu/images/aq_drawing.gif</item>
+    </string-array>
+
+    <string name="home_screen_text">Acuario datos han revelado características interesantes en los océanos del mundo, incluyendo un parche salado del agua en el Atlántico Norte
+Océano. La evaporación del agua de esta área deja grandes cantidades de sal, lo que contribuye a una región de alta salinidad.</string>
+
+
+</resources>
