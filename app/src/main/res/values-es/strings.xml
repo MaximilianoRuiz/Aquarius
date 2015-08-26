@@ -13,7 +13,8 @@
     <string name="image">Imagen</string>
     <string name="title">Titulo</string>
     <string name="description">Descripcion</string>
-    <string name="order_pref_title">Orden</string>
+    <string name="order_pref_title">Ordenar por</string>
+    <string name="priority">Prioridad</string>
 
     <string-array name="titles">
         <item>Diagrama del Aquarius listo para deployar</item>

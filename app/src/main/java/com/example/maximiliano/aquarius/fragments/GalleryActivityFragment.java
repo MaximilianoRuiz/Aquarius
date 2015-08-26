@@ -12,11 +12,12 @@ import android.widget.ListView;
 
 import com.example.maximiliano.aquarius.adapters.GalleryAdapter;
 import com.example.maximiliano.aquarius.R;
+import com.example.maximiliano.aquarius.data.DetailVO;
 import com.example.maximiliano.aquarius.data.Utility;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.Serializable;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -24,9 +25,9 @@ import java.util.List;
  */
 public class GalleryActivityFragment extends Fragment {
 
-    public static final String ITEM_POSITION = "ITEM_POSITION";
+    public static final String DETAILVO = "DETAILVO";
     ListView listView;
-    List<String> list;
+    List<DetailVO> detailVOs;
 
     public GalleryActivityFragment() {
     }
@@ -36,16 +37,26 @@ public class GalleryActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
 
-        list = new ArrayList(Arrays.asList(getResources().getStringArray(R.array.titles)));
+        detailVOs = Utility.obteinDetailVOList(getContext());
 
         if (Utility.isASCOrderPreferenceSelected(getActivity())) {
-            Collections.sort(list);
+            Collections.sort(detailVOs, new Comparator<DetailVO>() {
+                @Override
+                public int compare(DetailVO obj1, DetailVO obj2) {
+                    return obj1.getTitle().compareTo(obj2.getTitle());
+                }
+            });
         } else {
-            Collections.sort(list, Collections.reverseOrder());
+            Collections.sort(detailVOs, new Comparator<DetailVO>() {
+                @Override
+                public int compare(DetailVO obj1, DetailVO obj2) {
+                    return obj2.getPriority().compareTo(obj1.getPriority());
+                }
+            });
         }
 
         listView = (ListView) rootView.findViewById(R.id.listView);
-        listView.setAdapter(new GalleryAdapter(getActivity(), list));
+        listView.setAdapter(new GalleryAdapter(getActivity(), detailVOs));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -53,7 +64,7 @@ public class GalleryActivityFragment extends Fragment {
                 int container;
 
                 Bundle bundle = new Bundle();
-                bundle.putInt(ITEM_POSITION, position);
+                bundle.putSerializable(DETAILVO, detailVOs.get(position));
 
                 Fragment fragment = new DetailFragment();
                 fragment.setArguments(bundle);

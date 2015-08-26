@@ -6,6 +6,9 @@ import android.preference.PreferenceManager;
 
 import com.example.maximiliano.aquarius.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utility {
 
     public static final String IS_SPLAS = "is_splash";
@@ -38,7 +41,26 @@ public class Utility {
 
     public static boolean isASCOrderPreferenceSelected(Context context){
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        String orderAsc = context.getString(R.string.asc);
+        String orderAsc = context.getString(R.string.title);
         return orderAsc.equals(pref.getString(context.getString(R.string.order_pref_key), orderAsc));
+    }
+
+    public static List<DetailVO> obteinDetailVOList(Context context){
+        String[] titles = context.getResources().getStringArray(R.array.titles);
+        String[] descriptions = context.getResources().getStringArray(R.array.descriptions);
+        String[] urls = context.getResources().getStringArray(R.array.urls);
+        int[] priorities = context.getResources().getIntArray(R.array.priorities);
+
+        List<DetailVO> detailVOs = new ArrayList<>();
+
+        for (int i = 0; i < titles.length; i++) {
+            DetailVO detailVO = new DetailVO();
+            detailVO.setTitle(titles[i]);
+            detailVO.setDescription(descriptions[i]);
+            detailVO.setURLImage(urls[i]);
+            detailVO.setPriority(priorities[i]);
+            detailVOs.add(detailVO);
+        }
+        return detailVOs;
     }
 }

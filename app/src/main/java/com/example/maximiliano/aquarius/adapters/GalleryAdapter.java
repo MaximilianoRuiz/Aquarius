@@ -8,19 +8,20 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.maximiliano.aquarius.R;
+import com.example.maximiliano.aquarius.data.DetailVO;
 
 import java.util.List;
 
 public class GalleryAdapter extends ArrayAdapter{
 
     Context context;
-    List<String> list;
+    List<DetailVO> detailVOs;
 
 
-    public GalleryAdapter(Context context, List<String> list) {
-        super(context, R.layout.gallery_list_adapter, list);
+    public GalleryAdapter(Context context, List<DetailVO> detailVOs) {
+        super(context, R.layout.gallery_list_adapter, detailVOs);
         this.context = context;
-        this.list = list;
+        this.detailVOs = detailVOs;
     }
 
     public static class GalleryViewHolder{
@@ -38,7 +39,7 @@ public class GalleryAdapter extends ArrayAdapter{
 
         GalleryViewHolder holder = new GalleryViewHolder(row);
 
-        holder.textView.setText(list.get(position));
+        holder.textView.setText(detailVOs.get(position).getTitle());
 
         return row;
     }

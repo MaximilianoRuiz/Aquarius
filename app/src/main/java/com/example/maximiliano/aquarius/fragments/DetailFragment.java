@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.maximiliano.aquarius.R;
+import com.example.maximiliano.aquarius.data.DetailVO;
 import com.example.maximiliano.aquarius.data.Utility;
 import com.example.maximiliano.aquarius.fragments.GalleryActivityFragment;
 
@@ -37,7 +38,7 @@ public class DetailFragment extends Fragment {
     TextView tvTitle, tvDescription;
     ImageView imageView;
     ProgressBar progressBar;
-    int position;
+    DetailVO detailVO;
 
     public DetailFragment() {
     }
@@ -47,23 +48,19 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        position = this.getArguments().getInt(GalleryActivityFragment.ITEM_POSITION);
-        String[] titles = getResources().getStringArray(R.array.titles);
-        String[] descriptions = getResources().getStringArray(R.array.descriptions);
-        String[] urls = getResources().getStringArray(R.array.urls);
-        String url = urls[position];
+        detailVO = (DetailVO) this.getArguments().getSerializable(GalleryActivityFragment.DETAILVO);
 
         tvTitle = (TextView) rootView.findViewById(R.id.tvTitle);
         tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
         imageView = (ImageView) rootView.findViewById(R.id.imageView);
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
 
-        tvTitle.setText(titles[position]);
-        tvDescription.setText(descriptions[position]);
+        tvTitle.setText(detailVO.getTitle());
+        tvDescription.setText(detailVO.getDescription());
 
         ImageWorker imageWorker = new ImageWorker();
 
-        imageWorker.execute(url, Utility.getURLFileName(url));
+        imageWorker.execute(detailVO.getURLImage(), Utility.getURLFileName(detailVO.getURLImage()));
 
         return rootView;
     }
