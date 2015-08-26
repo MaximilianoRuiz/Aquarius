@@ -13,6 +13,10 @@
     <string name="image">Image</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="asc">Asc</string>
+    <string name="desc">Desc</string>
+    <string name="order_pref_title">Order</string>
+    <string name="order_pref_key">Order Key</string>
 
     <string-array name="titles">
         <item>Schematic Diagram of Aquarius in Deploy-ready Mode</item>
@@ -38,5 +42,13 @@
     <string name="home_screen_text">Aquarius data have revealed interesting features in the global ocean, including a salty patch of water in the North Atlantic
 Ocean. Evaporation of water from this area leaves behind large amounts of salt, contributing to a high-salinity region.</string>
 
+    <string-array name="order_options">
+        <item>@string/asc</item>
+        <item>@string/desc</item>
+    </string-array>
+    <string-array name="order_values">
+        <item>@string/asc</item>
+        <item>@string/desc</item>
+    </string-array>
 
 </resources>

@@ -28,4 +28,9 @@ public class Utility {
         editor.putBoolean(IS_SPLAS, false);
         editor.commit();
     }
+
+    public static String getOrderPreference(Context context){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getString(context.getString(R.string.order_pref_key), context.getString(R.string.asc));
+    }
 }
