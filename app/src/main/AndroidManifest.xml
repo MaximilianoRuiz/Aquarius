@@ -23,6 +23,10 @@
             android:label="@string/title_activity_home" >
         </activity>
         <activity
+            android:name=".SetingsActivity"
+            android:label="@string/action_settings" >
+        </activity>
+        <activity
             android:name=".SACSectionActivity"
             android:label="@string/title_activity_sacsection"
             android:parentActivityName=".HomeActivity" >

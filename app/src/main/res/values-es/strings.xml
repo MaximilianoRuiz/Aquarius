@@ -13,6 +13,8 @@
     <string name="image">Imagen</string>
     <string name="title">Titulo</string>
     <string name="description">Descripcion</string>
+    <string name="order_pref_title">Ordenar por</string>
+    <string name="priority">Prioridad</string>
     <string name="detail">Detalle</string>
 
     <string-array name="titles">

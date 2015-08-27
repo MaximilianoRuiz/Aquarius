@@ -1,4 +1,4 @@
-package com.example.maximiliano.aquarius;
+package com.example.maximiliano.aquarius.fragments;
 
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+
+import com.example.maximiliano.aquarius.R;
+import com.example.maximiliano.aquarius.data.Utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,14 +55,15 @@ public class SACSectionActivityFragment extends Fragment {
 
     public class ImageWorker extends AsyncTask<String, Void, String> {
 
-        public static final String JPG = ".jpg";
         public static final String IMAGES = "images";
+        public static final String EMPTY_PATH = "";
+        private Bitmap bitmap = null;
 
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
             String name = params[1];
-            File f = new File(IMAGE_PATH + name + JPG);
+            File f = new File(IMAGE_PATH + name + Utility.JPG);
             if(f.exists() && !f.isDirectory()) {
                 return f.getAbsolutePath();
             } else {
@@ -73,7 +77,9 @@ public class SACSectionActivityFragment extends Fragment {
 
             progressBar.setVisibility(View.GONE);
             imageView.setVisibility(View.VISIBLE);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(pathImage));
+            Bitmap finalBitmap = EMPTY_PATH.equals(pathImage) ?
+                    bitmap : BitmapFactory.decodeFile(pathImage);
+            imageView.setImageBitmap(finalBitmap);
 
         }
 
@@ -87,6 +93,9 @@ public class SACSectionActivityFragment extends Fragment {
                 conn.connect();
                 image = BitmapFactory.decodeStream(conn.getInputStream());
                 path = saveImage(getActivity(), name, image);
+                if (EMPTY_PATH.equals(path))
+                    bitmap = image;
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -98,7 +107,7 @@ public class SACSectionActivityFragment extends Fragment {
         private String saveImage (Context context, String nombre, Bitmap image){
             ContextWrapper cw = new ContextWrapper(context);
             File dirImages = cw.getDir(IMAGES, Context.MODE_PRIVATE);
-            File myPath = new File(dirImages, nombre + JPG);
+            File myPath = new File(dirImages, nombre + Utility.JPG);
 
             FileOutputStream fos = null;
             try{
@@ -109,6 +118,9 @@ public class SACSectionActivityFragment extends Fragment {
                 ex.printStackTrace();
             }catch (IOException ex){
                 ex.printStackTrace();
+            }
+            catch (Exception e) {
+                return EMPTY_PATH;
             }
             return myPath.getAbsolutePath();
         }
